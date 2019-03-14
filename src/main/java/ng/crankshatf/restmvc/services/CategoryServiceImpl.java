@@ -2,6 +2,7 @@ package ng.crankshatf.restmvc.services;
 
 import ng.crankshatf.restmvc.api.v1.mapper.CategoryMapper;
 import ng.crankshatf.restmvc.api.v1.model.CategoryDTO;
+import ng.crankshatf.restmvc.domain.Category;
 import ng.crankshatf.restmvc.repositories.CategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDTO getCategoryByName(String name) {
-        return categoryMapper.categoryToCategoryDTO(categoryRepository.findByNameIgnoreCase(name));
+        Category category = categoryRepository.findByNameIgnoreCase(name);
+        if (category != null) {
+            return categoryMapper.categoryToCategoryDTO(category);
+        } else  {
+            throw new ResourceNotFoundException();
+        }
     }
 }
