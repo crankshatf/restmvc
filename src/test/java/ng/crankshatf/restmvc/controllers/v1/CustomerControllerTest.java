@@ -2,7 +2,6 @@ package ng.crankshatf.restmvc.controllers.v1;
 
 import ng.crankshatf.restmvc.api.v1.model.CustomerDTO;
 import ng.crankshatf.restmvc.controllers.RestResponseEntityExceptionHandler;
-import ng.crankshatf.restmvc.domain.Customer;
 import ng.crankshatf.restmvc.services.CustomerService;
 import ng.crankshatf.restmvc.services.ResourceNotFoundException;
 import org.junit.Before;
