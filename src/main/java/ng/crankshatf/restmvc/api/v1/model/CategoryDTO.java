@@ -1,5 +1,8 @@
-package ng.crankshatf.restmvc.api.v1;
+package ng.crankshatf.restmvc.api.v1.model;
 
+import lombok.Data;
+
+@Data
 public class CategoryDTO {
 
     private Long id;
