@@ -6,6 +6,7 @@ import ng.crankshatf.restmvc.bootstrap.Bootstrap;
 import ng.crankshatf.restmvc.domain.Customer;
 import ng.crankshatf.restmvc.repositories.CategoryRepository;
 import ng.crankshatf.restmvc.repositories.CustomerRepository;
+import ng.crankshatf.restmvc.repositories.VendorRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -33,13 +34,16 @@ public class CustomerServiceIntegrationTest {
     @Autowired
     CategoryRepository categoryRepository;
 
+    @Autowired
+    VendorRepository vendorRepository;
+
     CustomerService customerService;
 
     @Before
     public void setUp() throws Exception {
         System.out.println("In Customer Service Integration Test, Loading Customer Data");
         System.out.println(customerRepository.findAll().size());
-        Bootstrap bootstrap = new Bootstrap(categoryRepository, customerRepository);
+        Bootstrap bootstrap = new Bootstrap(categoryRepository, customerRepository, vendorRepository);
         bootstrap.run();
         customerService = new CustomerServiceImpl(CustomerMapper.INSTANCE, customerRepository);
     }
